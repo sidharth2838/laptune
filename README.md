@@ -26,7 +26,6 @@ This project is a web application that allows users to customize and purchase la
 - **Frontend:** HTML, CSS, Bootstrap
 - **Backend:** Python, Django
 - **Database:** MySQL
-- ![IMG-20210901-WA0000](https://github.com/user-attachments/assets/a6fdce76-cddb-4e13-91c9-bfed0636a2cf)
 
 ## Getting Started
 To run this project locally, follow these steps:

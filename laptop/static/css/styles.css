@@ -1,0 +1,86 @@
+/* General Body Styling */
+body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section Styling */
+.hero-section {
+    background: url('{% static "images/background/backimg.avif" %}') no-repeat center center;
+    background-size: cover;
+    color: #e8e2e2;
+    text-align: center;
+    padding: 150px 0;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+/* Carousel Image Styling */
+.carousel-item img {
+    height: 500px; /* Increased height for a more impactful visual */
+    object-fit: cover;
+    border-radius: 5px; /* Optional: for a rounded image effect */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker for better contrast */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Card Styling */
+.card-img-top {
+    border-radius: 5px; /* Optional: for a rounded image effect */
+}
+
+/* Footer Styling */
+.footer-bg {
+    background-color: #ebeef2;
+    padding: 20px 0;
+}
+
+.intro-text {
+    color: #212020; /* Darker text color for better readability */
+}
+
+.intro-text a {
+    color: #f2f3f6; /* Bootstrap primary color */
+    text-decoration: none; /* No underline by default */
+}
+
+/* Hover Effects for Links */
+.intro-text a:hover {
+    color: #faf8f8; /* Green color on hover */
+    font-weight: bold; /* Make text bold */
+    text-transform: uppercase; /* Uppercase text */
+    transform: scale(1.05); /* Slightly increase size */
+    transition: all 0.3s ease; /* Smooth scaling and color transition */
+    text-shadow: 0 2px 4px rgba(19, 1, 1, 0.3); /* Shadow effect */
+}
+
+/* Navbar customization */
+.navbar-dark {
+    background-color:#03468f; /* More attractive and standard dark blue */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #f8f9fa; /* Light color for navigation links */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* More modern and readable font */
+    font-weight: 500; /* Slightly heavier font for better readability */
+    text-transform: uppercase; /* Uppercase text for nav links */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #f3f2ee; /* Gold color on hover */
+    text-decoration: none; /* No underline on hover */
+    border-bottom: 2px solid #f3f2ee; /* Gold underline effect on hover */
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Laptop Customization</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Load Django Static Files Template Tag -->
+    {% load static %}
+    <style>
+        body {
+            background: url("{% static 'images/background/logbg.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align items to the left */
+            padding-left: 20px; /* Adjust this padding to position the form slightly left of center */
+        }
+        .login-container {
+            max-width: 400px;
+            margin-left: 50px; /* Adjust this margin to position the form slightly left of center */
+        }
+        .login-form {
+            padding: 30px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .form-control {
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h2 class="text-center">Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            <p class="text-center mt-3">Don't have an account? <a href="{% url 'register' %}" class="text-light">Register</a></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section Styling */
+.hero-section {
+    background: url('{% static "images/bgimg.jpg" %}') no-repeat center center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+/* Carousel Image Styling */
+.carousel-item img {
+    height: 500px; /* Increased height for a more impactful visual */
+    object-fit: cover;
+    border-radius: 5px; /* Optional: for a rounded image effect */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker for better contrast */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Card Styling */
+.card-img-top {
+    border-radius: 5px; /* Optional: for a rounded image effect */
+}
+
+/* Footer Styling */
+.footer-bg {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+.intro-text {
+    color: #333; /* Darker text color for better readability */
+}
+
+.intro-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.intro-text a:hover {
+    text-decoration: underline;
+}

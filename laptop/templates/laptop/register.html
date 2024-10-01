@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Laptop Customization</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #033363;
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+        }
+        .navbar {
+            background-color: #03468f;
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #e2e6ea !important;
+        }
+        .register-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .register-form h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        {% comment %} .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da; {% endcomment %}
+        .form-control, .custom-select {
+            border-color: #0b151f;
+            border-radius: 0.5rem;
+        }
+        .btn-primary {
+            background-color: #032e5c;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #5faafa;
+            border-color: #004085;
+        }
+        .text-center a {
+            color: #007bff;
+        }
+        .text-center a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        {% comment %} .form-group label {
+            font-weight: 500; {% endcomment %}
+        .form-group label {
+            font-weight: bold;
+            color: #04145c;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">LAPTUNE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'review' %}">Reviews</a>
+                </li>
+            </ul>
+            <form class="form-inline ml-auto" method="get" action="{% url 'login' %}">
+                <button class="btn btn-outline-light" type="submit">Login</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="register-container">
+        <div class="register-form">
+            <h2 class="text-center">Register</h2>
+            <form method="post">
+                {% csrf_token %}
+                <!-- Existing form fields -->
+                {{ form.as_p }}
+
+                <!-- New Customer Category Dropdown -->
+                <div class="form-group">
+                    <label for="customer_category">Customer Category</label>
+                    <select class="form-control" id="customer_category" name="customer_category" required>
+                        <option value="">Select Category</option>
+                        <option value="Workers">Workers</option>
+                        <option value="Students">Students</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Personal">Personal</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form>
+            <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Laptop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #033363;
+        }
+        .navbar {
+            background-color: #03468f;
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #e2e6ea !important;
+        }
+        .card {
+            border-radius: 1rem,#8ebff5;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #04145c;
+            color: #ffffff;
+            border-bottom: none;
+            border-radius: 1rem 1rem 0 0;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #04145c;
+        }
+        .custom-select {
+            border-radius: 0.5rem;
+        }
+        .btn-primary {
+            background-color: #032e5c;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #5faafa;
+        }
+        .price-summary {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #16064a;
+        }
+        .form-control, .custom-select {
+            border-color: #0b151f;
+            border-radius: 0.5rem;
+        }
+        .form-control:focus, .custom-select:focus {
+            border-color: #0b151f;
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="{% url 'home' %}">Laptop Customization</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'customize' laptop.id %}">Customize</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title mb-0">Customize Your Laptop</h1>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'purchase' %}" id="customization-form">
+                    {% csrf_token %}
+
+                    <!-- Brand Selection -->
+                    <div class="form-group">
+                        <label for="brand">Select Brand:</label>
+                        <select class="form-control custom-select" id="brand" name="brand">
+                            <option value="" data-price="0">Please select a brand</option>
+                            <option value="Dell" data-price="20000">Dell (₹20,000)</option>
+                            <option value="HP" data-price="20000">HP (₹20,000)</option>
+                            <option value="Lenovo" data-price="20000">Lenovo (₹20,000)</option>
+                            <option value="Asus" data-price="20000">Asus (₹20,000)</option>
+                            <option value="Acer" data-price="20000">Acer (₹20,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Processor Selection -->
+                    <div class="form-group">
+                        <label for="processor">Select Processor:</label>
+                        <select class="form-control custom-select" id="processor" name="processor">
+                            <option value="i3" data-price="5000">Intel Core i3 (+₹5,000)</option>
+                            <option value="i5" data-price="10000">Intel Core i5 (+₹10,000)</option>
+                            <option value="i7" data-price="15000">Intel Core i7 (+₹15,000)</option>
+                            <option value="i9" data-price="20000">Intel Core i9 (+₹20,000)</option>
+                            <option value="AMD3" data-price="5000">Rayzen AMD 3 (+₹5,000)</option>
+                            <option value="AMD5" data-price="10000">Rayzen AMD 5 (+₹10,000)</option>
+                            <option value="AMD7" data-price="15000">Rayzen AMD 7 (+₹15,000)</option>
+                            <option value="AMD9" data-price="20000">Rayzen AMD 9 (+₹20,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- RAM Selection -->
+                    <div class="form-group">
+                        <label for="ram">Select RAM:</label>
+                        <select class="form-control custom-select" id="ram" name="ram">
+                            <option value="4" data-price="0">4GB (Included)</option>
+                            <option value="8" data-price="8000">8GB (+₹8,000)</option>
+                            <option value="16" data-price="12000">16GB (+₹12,000)</option>
+                            <option value="32" data-price="20000">32GB (+₹20,000)</option>
+                            <option value="64" data-price="30000">64GB (+₹30,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- ROM Selection -->
+                    <div class="form-group">
+                        <label for="rom">Select ROM:</label>
+                        <select class="form-control custom-select" id="rom" name="rom">
+                            <option value="128" data-price="0">128GB (Included)</option>
+                            <option value="256" data-price="5000">256GB (+₹5,000)</option>
+                            <option value="512" data-price="8000">512GB (+₹8,000)</option>
+                            <option value="1024" data-price="12000">1TB (+₹12,000)</option>
+                            <option value="2048" data-price="20000">2TB (+₹20,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Display Selection -->
+                    <div class="form-group">
+                        <label for="display">Select Display:</label>
+                        <select class="form-control custom-select" id="display" name="display">
+                            <option value="15.6" data-price="8000">15.6" 1920x1080 (+₹8,000)</option>
+                            <option value="17.3" data-price="20000">17.3" 3840x2160 (+₹20,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Keyboard Selection -->
+                    <div class="form-group">
+                        <label for="keyboard">Select Keyboard:</label>
+                        <select class="form-control custom-select" id="keyboard" name="keyboard">
+                            <option value="standard" data-price="0">Standard (Included)</option>
+                            <option value="backlit-rgb" data-price="6000">Gaming RGB (+₹6,000)</option>
+                            <option value="backlit" data-price="4000">Backlit (+₹4,000)</option>
+                            <option value="gaming-standard" data-price="6000">Gaming Standard (+₹6,000)</option>
+                            <option value="gaming-backlit" data-price="8000">Gaming Backlit (+₹8,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- SSD Selection -->
+                    <div class="form-group">
+                        <label for="ssd">Select SSD:</label>
+                        <select class="form-control custom-select" id="ssd" name="ssd">
+                            <option value="256" data-price="5000">256GB (+₹5,000)</option>
+                            <option value="512" data-price="8000">512GB (+₹8,000)</option>
+                            <option value="1024" data-price="12000">1TB (+₹12,000)</option>
+                            <option value="2048" data-price="20000">2TB (+₹20,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Exhaust Fan Selection -->
+                    <div class="form-group">
+                        <label for="fan">Select Exhaust Fan:</label>
+                        <select class="form-control custom-select" id="fan" name="fan">
+                            <option value="1" data-price="2000">1 Fan (+₹2,000)</option>
+                            <option value="2" data-price="4000">2 Fans (+₹4,000)</option>
+                            <option value="3" data-price="8000">3 Fans (+₹8,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Battery Selection -->
+                    <div class="form-group">
+                        <label for="battery">Select Battery:</label>
+                        <select class="form-control custom-select" id="battery" name="battery">
+                            <option value="4-cell" data-price="0">4-cell (Included)</option>
+                            <option value="6-cell" data-price="10000">6-cell (+₹10,000)</option>
+                            <option value="8-cell" data-price="15000">8-cell (+₹15,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Additional Features -->
+                    <div class="form-group">
+                        <label for="html-port">Select USB Port:</label>
+                        <select class="form-control custom-select" id="html-port" name="html-port">
+                            <option value="none" data-price="0">None (Included)</option>
+                            <option value="1" data-price="2000">2 Ports (+₹2,000)</option>
+                            <option value="2" data-price="3500">4 Ports (+₹3,500)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="headphone-port">Select Headphone Port:</label>
+                        <select class="form-control custom-select" id="headphone-port" name="headphone-port">
+                            <option value="none" data-price="0">None (Included)</option>
+                            <option value="1" data-price="1000">1 Port (+₹1,000)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="camera">Select Camera:</label>
+                        <select class="form-control custom-select" id="camera" name="camera">
+                            <option value="none" data-price="0">None (Included)</option>
+                            <option value="webcam" data-price="3000">Webcam (+₹3,000)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="touchpad-size">Select Touchpad Size:</label>
+                        <select class="form-control custom-select" id="touchpad-size" name="touchpad-size">
+                            <option value="standard" data-price="0">Standard (Included)</option>
+                            <option value="large" data-price="3000">Large (+₹3,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Graphics Card Selection -->
+                    <div class="form-group">
+                        <label for="graphics-card">Select Graphics Card:</label>
+                        <select class="form-control custom-select" id="graphics-card" name="graphics-card">
+                            <option value="none" data-price="0">None (Included)</option>
+                            <option value="dedicated" data-price="15000">Dedicated (+₹15,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Graphics Card Brand -->
+                    <div class="form-group" id="graphics-brand-container" style="display:none;">
+                        <label for="graphics-brand">Select Graphics Card Brand:</label>
+                        <select class="form-control custom-select" id="graphics-brand" name="graphics-brand">
+                            <option value="nvidia">NVIDIA</option>
+                            <option value="amd">AMD</option>
+                        </select>
+                    </div>
+
+                    <!-- Graphics Card Model -->
+                    <div class="form-group" id="graphics-model-container" style="display:none;">
+                        <label for="graphics-model">Select Graphics Card Model:</label>
+                        <select class="form-control custom-select" id="graphics-model" name="graphics-model">
+                            <!-- NVIDIA Models -->
+                            <option data-brand="nvidia" value="gtx-1650" data-price="15000">NVIDIA GeForce GTX 1650 - 4GB (+₹15,000)</option>
+                            <option data-brand="nvidia" value="rtx-3060" data-price="25000">NVIDIA GeForce RTX 3060 - 6GB (+₹25,000)</option>
+                            <option data-brand="nvidia" value="rtx-4070" data-price="35000">NVIDIA GeForce RTX 4070 - 8GB (+₹35,000)</option>
+                            <!-- AMD Models -->
+                            <option data-brand="amd" value="rx-6700-xt" data-price="20000">AMD Radeon RX 6700 XT - 12GB (+₹20,000)</option>
+                            <option data-brand="amd" value="rx-7900-xtx" data-price="30000">AMD Radeon RX 7900 XTX - 24GB (+₹30,000)</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div class="price-summary mb-4">
+                        Total Price: ₹<span id="total-price">00000</span>
+                    </div>
+
+                    <!-- Proceed Button -->
+                    <button type="submit" class="btn btn-primary btn-lg">Proceed to Purchase</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let basePrice = 0; // Default base price for brand
+            let graphicsCardPrice = 0; // Default graphics card price
+
+            // Function to update total price
+            function updateTotalPrice() {
+                let totalPrice = basePrice + graphicsCardPrice;
+
+                $('select').each(function() {
+                    let selectedOption = $(this).find('option:selected');
+                    if ($(this).attr('id') !== 'graphics-card' && $(this).attr('id') !== 'graphics-brand' && $(this).attr('id') !== 'graphics-model') {
+                        totalPrice += parseFloat(selectedOption.data('price') || 0);
+                    }
+                });
+
+                $('#total-price').text(totalPrice.toFixed(2));
+            }
+
+            // Update base price when brand is selected
+            $('#brand').change(function() {
+                basePrice = parseFloat($(this).find('option:selected').data('price') || 0);
+                updateTotalPrice();
+            });
+
+            // Show graphics card brand and model selectors if a dedicated card is selected
+            $('#graphics-card').change(function() {
+                if ($(this).val() === 'dedicated') {
+                    $('#graphics-brand-container').show();
+                    $('#graphics-model-container').show();
+                } else {
+                    $('#graphics-brand-container').hide();
+                    $('#graphics-model-container').hide();
+                    graphicsCardPrice = 0;
+                    $('#total-price').text(basePrice.toFixed(2));
+                }
+            });
+
+            // Update graphics card price based on selected model
+            $('#graphics-model').change(function() {
+                let selectedOption = $(this).find('option:selected');
+                graphicsCardPrice = parseFloat(selectedOption.data('price') || 0);
+                updateTotalPrice();
+            });
+
+            // Validate form before submission
+            $('#customization-form').on('submit', function(e) {
+                if ($('#brand').val() === '') {
+                    e.preventDefault();
+                    alert('Please select a brand.');
+                }
+            });
+
+            // Initial price calculation
+            updateTotalPrice();
+        });
+    </script>
+</body>
+</html>

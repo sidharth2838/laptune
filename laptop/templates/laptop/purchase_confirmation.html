@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Confirmation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #033363;
+        }
+        .navbar {
+            background-color: #03468f;
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important;
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #e2e6ea !important;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        h1 {
+            color:  #032b54;
+        }
+        h3 {
+            color:  #032b54;
+            border-bottom: 2px solid #032b54;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary {
+            background-color: #032e5c;
+            border: none;
+            border-radius: 0.5rem;
+        }
+        .btn-primary:hover {
+            background-color: #5faafa;
+        }
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .card-header {
+            background-color:#115bab;
+            color: #ffffff;
+            border-bottom: none;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Laptop Customization</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'review' %}">Reviews</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Thank You for Your Purchase!</h1>
+        
+        <!-- Customer Information -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Customer Information
+            </div>
+            <div class="card-body">
+                <p><strong>Name:</strong> {{ name }}</p>
+                <p><strong>Email:</strong> {{ email }}</p>
+                <p><strong>Phone Number:</strong> {{ phone }}</p>
+            </div>
+        </div>
+        
+        <!-- Payment Information -->
+        <div class="card">
+            <div class="card-header">
+                Payment Information
+            </div>
+            <div class="card-body">
+                <p><strong>Payment Method:</strong> {{ payment_method }}</p>
+                <p><strong>Card Number (Last 4 Digits):</strong> **** **** **** {{ card_last4 }}</p>
+            </div>
+        </div>
+        
+        <p class="mt-4">Your order will be processed shortly. You will receive a confirmation email with the tracking details once your order has been shipped.</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+    </div>
+</body>
+</html>

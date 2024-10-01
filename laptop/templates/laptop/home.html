@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Laptop Customization</title>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Load Django Static Files Template Tag -->
+    {% load static %}
+    <!-- Load Custom Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .hero-section {
+            background: url("{% static 'images/background/backimg.avif' %}") no-repeat center center;
+            background-size: cover;
+            color: #f5f0f0;
+            text-align: center;
+            padding: 150px 0;
+        }
+
+        .footer-bg {
+            background-color: #e6e8eb;
+            color: #aaacad;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card-img-top {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .btn-primary {
+            background-color: #033363;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #033363;
+        }
+
+        /* Navbar customization */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #f5f0f0; /* White color for navigation links */
+        }
+
+        {% comment %} .navbar-dark .navbar-nav .nav-link:hover {
+            color: #f8f9fa; /* Slightly lighter white color on hover */
+            text-decoration: underline; /* Underline on hover for better visibility */ {% endcomment %}
+        {% comment %} } {% endcomment %}
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">LAP TUNE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'review' %}">Reviews</a>
+                </li>
+            </ul>
+            <form class="form-inline ml-auto" method="get" action="{% url 'login' %}">
+                <button class="btn btn-outline-light" type="submit">Login</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="display-4">Welcome to LAP TUNE </h1>
+            <p class="lead">Create your perfect laptop by customizing every detail to fit your needs. Choose from our range of options and enjoy a tailored computing experience.</p>
+        </div>
+    </header>
+
+    
+    <!-- Custom Laptop Options Section -->
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <img src="{% static 'images/background/lap1.jpeg' %}" class="card-img-top" alt="Custom Laptop Option 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Custom Laptop Option 1</h5>
+                        <p class="card-text">Explore this custom option to tailor your performance needs. Choose specs, designs.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <img src="{% static 'images/background/lap2.jpeg' %}" class="card-img-top" alt="Custom Laptop Option 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Custom Laptop Option 2</h5>
+                        <p class="card-text">Select from our range of customization options to fit your exact needs and preferences.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                    <img src="{% static 'images/background/lap3.jpeg' %}" class="card-img-top" alt="Custom Laptop Option 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Custom Laptop Option 3</h5>
+                        <p class="card-text">Discover the possibilities for creating a laptop that meets your specific requirements.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bg text-center py-4 mt-4">
+        <div class="container">
+            <p class="intro-text mb-0">Explore our extensive range of laptops and find the perfect match for you. Customize your choice, experience the best technology, and enjoy unparalleled performance. <a href="{% url 'login' %}" class="btn btn-primary">Login to Get Started</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript and Bootstrap dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
